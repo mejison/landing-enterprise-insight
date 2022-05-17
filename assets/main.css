@@ -691,6 +691,10 @@ footer .item a {
     width: 10px;
     height: 10px;
 }
+
+.slider {
+    cursor: pointer;
+}
 /* slider - end*/
 
 /* mouse scroll down */

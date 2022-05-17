@@ -57,4 +57,8 @@
             behavior: "smooth"
         });
     });
+
+    $('.slider .slick-slide').click(function() {
+        $('#free-demo-dialog').addClass('open');
+    });
 })();
