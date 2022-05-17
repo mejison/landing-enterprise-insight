@@ -32,6 +32,66 @@ html,body  {
     text-decoration: none;
 }
 
+.wrap-checkbox {
+    display: inline-block;
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.wrap-checkbox  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    background-color: #eee;
+    border-radius: 2px;
+}
+
+.wrap-checkbox :hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.wrap-checkbox  input:checked ~ .checkmark {
+    background-color: #E82A45;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.wrap-checkbox  input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.wrap-checkbox  .checkmark:after {
+    left: 5px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
 
 .btn.btn-red:hover,
 .btn:hover {
@@ -355,19 +415,23 @@ header .auth .btn {
 /* footer */
 footer {
     background: #050728;
-    padding: 63px 0 84px;
+    padding: 63px 0 63px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-around; 
 }
 
 footer .title {
     font-weight: 500;
-    font-size: 13px;
+    font-size: 15px;
     line-height: 21px;
     color: #828393;
     margin-bottom: 15px;
 }
 
 footer .logo {
-    margin-left: 15px;
 }
 
 footer .item {
@@ -376,11 +440,20 @@ footer .item {
 
 footer .item a {
     font-weight: 500;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 19px;
     color: #FFFFFF;
     text-decoration: none;
+}
 
+footer .row div > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer .item a:hover {
+    color: #AFB0BC;
 }
 /* footer - end */
 
@@ -401,20 +474,21 @@ footer .item a {
     justify-content: center;
     align-items: center;
     opacity: 0;
-    visibility: hidden;
-    z-index: -999;
-    transition: all .3s;
+    transition: opacity 0.5s ease-in-out;
+    transform: translateY(-100%);
+    z-index: -1;
 }
 
 #free-demo-dialog.open {
     opacity: 1;
-    visibility: visible;
     z-index: 999;
+    transform: translateY(0);
 }
 
 .dialog {
     max-width: 728.73px;
     max-height: 561.45px;
+    min-width: 561.45px;
     background: #FFFFFF;
     border-radius: 10px;
     position: relative;
@@ -439,19 +513,21 @@ footer .item a {
     margin-bottom: 10px;
 }
 
-.dialog form label {
+.dialog form label:not(.wrap-checkbox) {
     display: inline-block;
     display: flex;
     align-items: center;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 16px;
     color: #5C5D82;
     padding: 30px 0 23px;
+    padding-left: 10px;
 }
 
 .dialog form label input[type=checkbox]{
     margin-right: 10px;
+    margin-left: 10px;
 }
 
 .dialog form .btn {
@@ -611,19 +687,21 @@ footer .item a {
     max-width: 450px;
 }
 
-#contact-us form label {
+#contact-us form label:not(.wrap-checkbox) {
     display: inline-block;
     display: flex;
     align-items: center;
     font-weight: 500;
-    font-size: 10px;
+    font-size: 12px;
     line-height: 16px;
     color: #5C5D82;
     padding: 30px 0 23px;
+    padding-left: 10px;
 }
 
-#contact-us form label input[type=checkbox]{
+#contact-us form label:not(.wrap-checkbox) input[type=checkbox]{
     margin-right: 10px;
+    margin-left: 10px;
 }
 
 #contact-us form .btn.btn-red{
@@ -897,7 +975,7 @@ to {
     }
 
     #contact-us .row div .btn,
-    #contact-us .row div label {
+    #contact-us .row div label:not(.wrap-checkbox) {
         display: flex;
         justify-content: center;
         margin: 0 auto;
@@ -917,11 +995,9 @@ to {
         text-align: center;
     }
 
-    footer .row div {
-        align-items: center;
-        display: flex;
+    .footer {
         flex-direction: column;
-        margin-bottom: 30px;
+        padding: 0 15%;
     }
 
     header .auth {

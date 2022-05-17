@@ -51,7 +51,6 @@
         const scrollY = window.scrollY
         sliders.forEach(function(slide) {
             if (scrollY + 300 >= slide.top) {
-                console.log(slide.el)
                 $(slide.el).slick('slickSetOption', {
                     autoplay: true
                 }, true);
