@@ -19,17 +19,46 @@
             }
           }
         }
-      }
+    }
 
-    $('.slider').slick({
-        dots: true,
-        arrows: false,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        infinite: true,
-        slidesToShow: 1,
+    let speeds = [2500, 1500, 1800, 2500, 3000];
+
+    $('.slider').each(function(index) {
+        $(this).slick({
+            dots: true,
+            arrows: false,
+            speed: 1000,
+            autoplaySpeed: speeds[index],
+            infinite: true,
+            slidesToShow: 1,
+        });
+    });
+    
+    let sliders = [];
+
+    $('.slider').each(function() {
+        let {top} = $(this).offset();
+        sliders = [
+            ...sliders,
+            {
+                el: $(this).first(),
+                top,
+            }
+        ]
     });
 
+    window.addEventListener('scroll', function() {
+        const scrollY = window.scrollY
+        sliders.forEach(function(slide) {
+            if (scrollY + 300 >= slide.top) {
+                console.log(slide.el)
+                $(slide.el).slick('slickSetOption', {
+                    autoplay: true
+                }, true);
+            }
+        });
+    }, false);
+    
     $('.free-demo-open').click(function() {
         $('#free-demo-dialog').addClass('open');
     });
