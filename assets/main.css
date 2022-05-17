@@ -16,7 +16,7 @@ html,body  {
 }
 
 .btn {
-    display: flex;
+    display: inline-flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -29,6 +29,7 @@ html,body  {
     border-radius: 6px;
     white-space: nowrap;
     transition: all .3s;
+    text-decoration: none;
 }
 
 
