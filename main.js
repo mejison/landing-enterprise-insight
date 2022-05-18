@@ -57,6 +57,8 @@
             }
         });
     }, false);
+
+    $("[name='phone']").formatPhoneNumber();
     
     $('.free-demo-open').click(function() {
         $('#free-demo-dialog').addClass('open');
@@ -88,5 +90,29 @@
 
     $('.slider .slick-slide').click(function() {
         $('#free-demo-dialog').addClass('open');
+    });
+
+    $('#free-demo-form, #contact-us-form').submit(function(event) {
+        event.preventDefault();
+        let data = {
+            name: $("[name='name']").val(),
+            email: $("[name='email']").val(),
+            organization: $("[name='organization']").val(),
+            job_title: $("[name='job_title']").val(),
+            phone: $("[name='phone']").val(),
+        };
+
+        if ($('[name="agree"]').is(":checked")) {
+            console.log(data);
+
+            swal({
+                position: 'top-end',
+                type: 'success',
+                icon: 'success',
+                title: 'Form successfully submitted',
+                text: 'You will be contacted',
+                showConfirmButton: true,
+              })
+        }
     });
 })();
