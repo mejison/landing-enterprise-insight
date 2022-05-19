@@ -77,8 +77,8 @@
     });
 
     $('.dropbtn').click(function() {
-        $('.dropdown-content').removeClass('show');
-        $(this).parent().find('.dropdown-content').addClass('show');
+        $('.dropdown-content').not($(this).parent().find('.dropdown-content')).removeClass('show');
+        $(this).parent().find('.dropdown-content').toggleClass('show');
     });
 
     $(".moving-mouse-holder").click(function() {
@@ -88,9 +88,22 @@
         });
     });
 
-    $('.slider .slick-slide').click(function() {
-        $('#free-demo-dialog').addClass('open');
-    });
+    let isDragging = false;
+    $('.slider .slick-slide')
+        .mousedown(function() {
+            $(window).mousemove(function() {
+                isDragging = true;
+                $(window).unbind("mousemove");
+            });
+        })
+        .mouseup(function() {
+            var wasDragging = isDragging;
+            isDragging = false;
+            $(window).unbind("mousemove");
+            if (!wasDragging) {
+                $('#free-demo-dialog').addClass('open');
+            }
+        });
 
     $('#free-demo-form, #contact-us-form').submit(function(event) {
         event.preventDefault();
