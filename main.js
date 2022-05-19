@@ -56,6 +56,13 @@
                 }, true);
             }
         });
+
+        if (scrollY >= $(window).height() - 200) {
+            $('.moving-mouse-holder').fadeOut();
+        }
+        if (scrollY <= 50) {
+            $('.moving-mouse-holder').fadeIn();
+        }
     }, false);
 
     $("[name='phone']").formatPhoneNumber();
@@ -104,6 +111,10 @@
                 $('#free-demo-dialog').addClass('open');
             }
         });
+
+    $('.macbook').click(function() {
+        $('#free-demo-dialog').addClass('open');
+    });
 
     $('#free-demo-form, #contact-us-form').submit(function(event) {
         event.preventDefault();

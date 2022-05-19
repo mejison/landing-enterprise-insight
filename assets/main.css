@@ -130,7 +130,7 @@ html,body  {
     right: 0;
     top: 0;
     z-index: 1;
-    color: red;
+    color: #82839C;
 
 }
 /* end - common */
@@ -368,6 +368,7 @@ header .auth .btn {
     position: absolute;
     top: -20px;
     left: 0;
+    cursor: pointer;
 }
 /* section main - end */
 
@@ -529,7 +530,7 @@ footer .item a:hover {
     z-index: 2;
     top: 10%;
     right: 5px;
-    color: #E82A45;
+    color: #82839C;
 
 }
 
@@ -706,7 +707,7 @@ footer .item a:hover {
     z-index: 2;
     top: 10%;
     right: 5px;
-    color: #E82A45;
+    color: #82839C;
 
 }
 
